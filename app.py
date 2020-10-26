@@ -64,27 +64,27 @@ def get_more_info():
     patient_info = patients_info.loc[patients_info['id'] == id]
     out = patient_info.to_dict(orient = "records")[0]
 
-    # #tosearch="treatment "+out['diagnosis']+" medicinenet.com"
-    # query_D=out['diagnosis']+" medicinenet.com"
-    # res=search(query_D, tld="co.in", num=15, stop=15, pause=2)
-    # buttoms={}
-    # for j in res: 
-    #     downloaded = trafilatura.fetch_url(j)
-    #     res=trafilatura.extract(downloaded, target_language='en')
-    #     temp_buttoms=res[1]
-    #     temp_buttoms.update(res[2])
-    #     if (bool(temp_buttoms)):
-    #         buttoms.update(temp_buttoms)
-    #         print(j)
-    #     if len(buttoms)>=4:
-    #         print("got it! ")
-    #         break
+    #tosearch="treatment "+out['diagnosis']+" medicinenet.com"
+    query_D=out['diagnosis']+" medicinenet.com"
+    res=search(query_D, tld="co.in", num=15, stop=15, pause=2)
+    buttoms={}
+    for j in res: 
+        downloaded = trafilatura.fetch_url(j)
+        res=trafilatura.extract(downloaded, target_language='en')
+        temp_buttoms=res[1]
+        temp_buttoms.update(res[2])
+        if (bool(temp_buttoms)):
+            buttoms.update(temp_buttoms)
+            print(j)
+        if len(buttoms)>=4:
+            print("got it! ")
+            break
     
-    # if not bool(buttoms):
-    #     resp = flask.jsonify("No results!")
-    #     resp.headers.add('Access-Control-Allow-Origin', '*')
-    #     return resp
-    buttoms=out
+    if not bool(buttoms):
+        resp = flask.jsonify("No results!")
+        resp.headers.add('Access-Control-Allow-Origin', '*')
+        return resp
+    # buttoms=out
     resp = flask.jsonify(buttoms)
     resp.headers.add('Access-Control-Allow-Origin', '*')
     return resp
