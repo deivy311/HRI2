@@ -205,7 +205,7 @@ def xmltotxt(xmloutput):
             continue
         textelement = replace_element_text(element)
         if textelement!=None:
-            textelement.replace("_", "")# solving strange  characters issue
+            textelement=textelement.replace("_", "")# solving strange  characters issue
         if element.tag=='head' and (element.text!='' and element.text!=None ):
             out_main_title[textelement]=""
             flat_head=True
