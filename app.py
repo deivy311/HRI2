@@ -3,7 +3,8 @@ import json
 import pandas as pd
 from flask import Flask, jsonify, request
 from flask_cors import CORS, cross_origin
-
+import trafilatura
+from googlesearch import search 
 app = flask.Flask(__name__)
 app.config["DEBUG"] = True
 CORS(app, support_credentials=True)
