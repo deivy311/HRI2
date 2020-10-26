@@ -17,6 +17,8 @@ import pkg_resources
 
 from .utils import sanitize
 
+import re
+
 
 LOGGER = logging.getLogger(__name__)
 # validation
@@ -176,8 +178,28 @@ def merge_with_parent(element):
         else:
             parent.text = full_text
     parent.remove(element)
-
-
+def text_process2(text_var,explicity=False):
+    excluded_specific_words2=["faq","$","&",":","linked","choose","doctor","resource:","resources:","from:","source:","sources:","feature:","features:","center","solution:","sponsor","subscribe","click","submit","Policy","Privacy","question","quiz","multimedia","slide","test","learn","discover","appointment"]
+    if explicity:
+        for ex_words in excluded_specific_words2:
+            if ex_words in text_var.lower():
+             text_var=""
+    return text_var
+def text_process(text_var,explicity=False,special_string=""):
+    new_text=re.sub(r'<.+?>', '', text_var)
+    new_text=new_text.replace('_','')
+    excluded_words=["sources:","from:"]
+    excluded_specific_words=["resource","from","source","feature","center","solution","sponsor","subscribe","click","submit","Policy","Privacy","question","quiz","multimedia","slide","test","learn","discover"]
+    if special_string!="":
+        excluded_words.append(special_string)
+    for ex_words in excluded_words:
+        if ex_words in new_text.lower():
+            new_text=""
+    if explicity:
+        for ex_words in excluded_specific_words:
+            if ex_words.lower() in new_text.lower():
+             new_text=""
+    return new_text
 def xmltotxt(xmloutput):
     '''Convert to plain text format'''
     out_titles={}
@@ -188,8 +210,9 @@ def xmltotxt(xmloutput):
     for element in xmloutput.xpath('//hi|//link'):
         merge_with_parent(element)
         if element.tag=='hi' and (element.text!='' and element.text!=None ):
-            element = element.replace("_", "")# solving strange  characters issue
-            out_titles[element.text]=""
+            # element = element.replace("_", "")# solving strange  characters issue
+            new_text=text_process(element.text,explicity=True)
+            out_titles[new_text]=""
         continue
     # iterate and convert to list of strings
     flat1=False
@@ -204,20 +227,27 @@ def xmltotxt(xmloutput):
                 returnlist.append('\n')
             continue
         textelement = replace_element_text(element)
-        if textelement!=None:
-            textelement=textelement.replace("_", "")# solving strange  characters issue
+        # if textelement!=None:
+        #      textelement=text_process(textelement)# solving strange  characters issue
         if element.tag=='head' and (element.text!='' and element.text!=None ):
+            #new_text=text_process(element.text)
+            textelement=text_process(textelement,explicity=True)
             out_main_title[textelement]=""
             flat_head=True
             flat_head_name=textelement
         elif(flat_head):
+            textelement = text_process(textelement,special_string="?")
+            textelement = text_process2(textelement,explicity=True)
             out_main_title[flat_head_name]+=textelement
         if bool(out_titles):
             if textelement in out_titles:
+                textelement=text_process(textelement,explicity=True)
                 flat_head=False
                 flat1=True
                 flat_title=textelement
             elif(flat1):
+                textelement = text_process(textelement,special_string="?")
+                textelement = text_process2(textelement,explicity=True)
                 out_titles[flat_title]+=textelement
         if element.tag in ('code', 'fw', 'head', 'lb', 'list', 'p', 'quote', 'row', 'table'):
             returnlist.extend(['\n', textelement, '\n'])
@@ -230,8 +260,14 @@ def xmltotxt(xmloutput):
         else:
             # print(element.tag)
             returnlist.extend([textelement, ' '])
+    out_main_title=without_keys(out_main_title, "")    
+    out_titles=without_keys(out_titles, "")    
     return sanitize(''.join(returnlist)),out_main_title,out_titles
-
+def without_keys(d, excluded_keys):
+    temp_dic={x: d[x] for x in d if x not in excluded_keys}
+  #return {x: d[x] for x in d if x not in excluded_keys}
+# def without_values(d, excluded_values):
+    return {x: temp_dic[x] for x in temp_dic if temp_dic[x] not in excluded_keys}
 
 def write_teitree(postbody, commentsbody, docmeta):
     '''Bundle the extracted post and comments into a TEI tree'''

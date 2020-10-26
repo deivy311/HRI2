@@ -71,12 +71,12 @@ def get_more_info():
     buttoms={}
     for j in res: 
         downloaded = trafilatura.fetch_url(j)
-        res=trafilatura.extract(downloaded, target_language='en')
+        res=trafilatura.extract(downloaded,include_comments=False,include_tables=False, target_language='en')
         temp_buttoms=res[1]
         temp_buttoms.update(res[2])
         if (bool(temp_buttoms)):
             buttoms.update(temp_buttoms)
-            print(j)
+            #print(j)
         if len(buttoms)>=4:
             print("got it! ")
             break
@@ -90,4 +90,4 @@ def get_more_info():
     resp.headers.add('Access-Control-Allow-Origin', '*')
     return resp
 if __name__ == '__main__':
-    app.run(port=5000)
+    app.run(port=5500)
