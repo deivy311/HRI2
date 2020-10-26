@@ -1,0 +1,6 @@
+id,patient_id,triglycerides,glucose,HBA1C,total_cholesterol,HDL_cholesterol,non_DHL_cholesterol
+1,1,140,110,6.7,220,67,120
+2,2,,,,,,
+3,3,,,,,,
+4,4,,,,,,
+5,5,,,,,,

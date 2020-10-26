@@ -1,0 +1,6 @@
+id,name,lastname,birthday,age,arrival_date,status,doctor,diagnosis,treatment,medicine,schedule,next_appointment
+1,Anupam ,Nautiyal,11/23/1996,24,9/20/2020,Control,Yoshimoto,Spicy food poisoning,Detoxification,Detox pills,3 times a day,9/25/2020
+2,Michal,Ostik,,,,Recovery,,,,,,
+3,Federico,Vergallo,,,,Diagnosis,,,,,,
+4,Egor,Orel,,,,,,,,,,
+5,David,Imbajoa,,,,,,,,,,
