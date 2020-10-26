@@ -188,6 +188,7 @@ def xmltotxt(xmloutput):
     for element in xmloutput.xpath('//hi|//link'):
         merge_with_parent(element)
         if element.tag=='hi' and (element.text!='' and element.text!=None ):
+            element = element.replace("_", "")# solving strange  characters issue
             out_titles[element.text]=""
         continue
     # iterate and convert to list of strings
@@ -203,6 +204,8 @@ def xmltotxt(xmloutput):
                 returnlist.append('\n')
             continue
         textelement = replace_element_text(element)
+        if textelement!=None:
+            textelement.replace("_", "")# solving strange  characters issue
         if element.tag=='head' and (element.text!='' and element.text!=None ):
             out_main_title[textelement]=""
             flat_head=True
