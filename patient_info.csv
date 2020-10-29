@@ -1,6 +1,11 @@
-id,name,lastname,birthday,age,arrival_date,status,doctor,diagnosis,treatment,medicine,schedule,next_appointment
-1,Anupam ,Nautiyal,11/23/1996,24,9/20/2020,Control,Yoshimoto,Spicy food poisoning,Detoxification,Detox pills,3 times a day,9/25/2020
-2,Michal,Ostik,11/23/1996,24,9/20/2020,Control,Yoshimoto,gastritis,Detoxification,Detox pills,3 times a day,9/25/2020
-3,Federico,Vergallo,11/23/1996,24,9/20/2020,Control,Yoshimoto,Influence,Detoxification,Detox pills,3 times a day,9/25/2020
-4,Egor,Orel,,,,,,,,,,
-5,David,Imbajoa,,,,,,,,,,
+id,name,lastname,birthday,age,arrival_date,status,doctor,diagnosis,treatment,medicine,schedule,next_appointnment,dr_order
+1,Andres,Nautiyal,10-10-95,25,13-10-20,control,Hashimoto,Poisining,detoxification,detox pills,3 times a day,10-27-2020,0
+2,David,Reddy,11-11-95,24,20-09-20,recovery,De Luca,Diarrhea,Diet,clean water,5 times a day,10-27-2020,0
+3,Egor,Orel,01-01-95,25,14-10-20,recovery,Nardi,Hypoglikemia,donuts therapy,fresh hot donuts,2 times a day,10-29-2020,0
+4,Anupam,Ostyk,02-02-95,25,20-08-20,diagnosis,Nardi,Hypoglikemia,donuts therapy,fresh hot donuts,3 times a day,10-29-2020,0
+5,Michal,Arciniegas,03-03-95,25,23-03-20,control,De Luca,Diarrhea,Diet,clean water,3 times a day,10-30-2020,0
+6,Federico,Mejia,04-04-95,25,15-09-20,diagnosis,Iocchi,Poisining,detoxification,detox pills,2 times a day,10-27-2020,1
+7,Peter,Imbajoa,05-05-95,25,10-05-20,control,Iocchi,Poisining,detoxification,detox pills,5 times a day,10-28-2020,1
+8,Marcello,Ruiz,06-06-95,25,25-10-20,diagnosis,Iocchi,Hypoglikemia,donuts therapy,fresh hot donuts,5 times a day,10-30-2020,1
+9,Joris,Pharaone,07-07-95,25,26-10-20,recovery,De Luca,Diarrhea,Diet,clean water,3 times a day,10-29-2020,1
+10,Akhil,Demiraj,08-08-95,25,24-10-20,diagnosis,Hashimoto,Diarrhea,Diet,clean water,5 times a day,10-27-2020,1
