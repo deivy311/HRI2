@@ -1,5 +1,5 @@
 id,name,lastname,birthday,age,arrival_date,status,doctor,diagnosis,treatment,medicine,schedule,next_appointnment,dr_order
-1,Andres,Nautiyal,10-10-95,25,13-10-20,control,Hashimoto,Poisining,detoxification,detox pills,3 times a day,10-27-2020,0
+1,Anurich,Nautiyal,10-10-95,25,13-10-20,control,Hashimoto,Poisining,detoxification,detox pills,3 times a day,10-27-2020,0
 2,David,Reddy,11-11-95,24,20-09-20,recovery,De Luca,Diarrhea,Diet,clean water,5 times a day,10-27-2020,0
 3,Egor,Orel,01-01-95,25,14-10-20,recovery,Nardi,Hypoglikemia,donuts therapy,fresh hot donuts,2 times a day,10-29-2020,0
 4,Anupam,Ostyk,02-02-95,25,20-08-20,diagnosis,Nardi,Hypoglikemia,donuts therapy,fresh hot donuts,3 times a day,10-29-2020,0
